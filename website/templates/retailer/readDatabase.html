@@ -1,0 +1,100 @@
+{% extends "base.html" %} {% block title %}ReadDatabaseEntry{% endblock %}
+{% block content%}
+<table>
+    <tr>
+        <th>Brand Name</th>
+        <td>{{ data.name }}</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>{{ data.price }}</td>
+    </tr>
+    <tr>
+        <th>Brewer</th>
+        <td>{{ data.brewer }}</td>
+    </tr>
+    <tr>
+        <th>Origin Region</th>
+        <td>{{ data.region }}</td>
+    </tr>
+    <tr>
+        <th>Origin Country</th>
+        <td>{{ data.country }}</td>
+    </tr>
+    <tr>
+        <th>Origin State</th>
+        <td>{{ data.state }}</td>
+    </tr>
+    <tr>
+        <th>Temporary Beer Style 1</th>
+        <td>{{ data.tempBeerStyle1 }}</td>
+    </tr>
+    <tr>
+        <th>Temporary Beer Style 2</th>
+        <td>{{ data.tempBeerStyle2 }}</td>
+    </tr>
+    <tr>
+        <th>Primary Beer Style</th>
+        <td>{{ data.primaryBeerStyle }}</td>
+    </tr>
+    <tr>
+        <th>Primary Beer Style Description</th>
+        <td>{{ data.primaryBeerStyleDesc }}</td>
+    </tr>
+    <tr>
+        <th>Specific Beer Style</th>
+        <td>{{ data.specificBeerStyle }}</td>
+    </tr>
+    <tr>
+        <th>Specific Beer Style Description</th>
+        <td>{{ data.specificBeerStyleDesc }}</td>
+    </tr>
+    <tr>
+        <th>Food Pairing</th>
+        <td>{{ data.foodPairing }}</td>
+    </tr>
+    <tr>
+        <th>Oz</th>
+        <td>{{ data.oz }}</td>
+    </tr>
+    <tr>
+        <th>ml</th>
+        <td>{{ data.ml }}</td>
+    </tr>
+    <tr>
+        <th>Container</th>
+        <td>{{ data.container }}</td>
+    </tr>
+    <tr>
+        <th>ABV</th>
+        <td>{{ data.abv }}</td>
+    </tr>
+    <tr>
+        <th>IBU</th>
+        <td>{{ data.ibu }}</td>
+    </tr>
+    <tr>
+        <th>SRM</th>
+        <td>{{ data.srm }}</td>
+    </tr>
+    <tr>
+        <th>Malt</th>
+        <td>{{ data.malt }}</td>
+    </tr>
+    <tr>
+        <th>Hops</th>
+        <td>{{ data.hops }}</td>
+    </tr>
+    <tr>
+        <th>Calories</th>
+        <td>{{ data.cals }}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{ data.desc }}</td>
+    </tr>
+</table>
+<form method="POST">
+    <button type="submit" class="btn btn-primary" name="button" value="back"> Back </button>
+</form>
+{% endblock %}

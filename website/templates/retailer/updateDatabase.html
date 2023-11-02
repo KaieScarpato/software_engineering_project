@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}UpdateDatabaseEntry{% endblock %}
+{% block content%}
+<form method="POST">
+    <h1>Enter Information</h1>
+    <table>
+        <tr>
+            <td><label for="abv">Price</label></td>
+            <td><input type="text" class="form-control" id="abv" name="price" value="{{data.price}}"/></td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" name="button" value="update"> Update </button>
+    </div>
+</form>
+{% endblock %}
