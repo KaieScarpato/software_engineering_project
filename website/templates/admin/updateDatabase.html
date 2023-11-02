@@ -1,0 +1,103 @@
+{% extends "base.html" %} {% block title %}UpdateDatabaseEntry{% endblock %}
+{% block content%}
+<form method="POST">
+    <h1>Enter Information</h1>
+    <table>
+        <tr>        
+            <td><label for="name">Name</label></td>
+            <td><input type="text" class="form-control" id="name" name="name" value="{{data.name}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="abv">Price</label></td>
+            <td><input type="text" class="form-control" id="abv" name="price" value="{{data.price}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="brewer">Brewer</label></td>
+            <td><input type="text" class="form-control" id="brewer" name="brewer" value="{{data.brewer}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="region">Region</label></td>
+            <td><input type="text" class="form-control" id="region" name="region" value="{{data.region}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="country">Country</label></td>
+            <td><input type="text" class="form-control" id="country" name="country" value="{{data.country}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="state">State</label></td>
+            <td><input type="text" class="form-control" id="state" name="state" value="{{data.state}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="temp1">Temporary Beer Style 1</label></td>
+            <td><input type="text" class="form-control" id="temp1" name="temp1" value="{{data.tempBeerStyle1}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="temp2">Temporary Beer Style 2</label></td>
+            <td><input type="text" class="form-control" id="temp2" name="temp2" value="{{data.tempbeerStyle2}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="primary">Primary Beer Style</label></td>
+            <td><input type="text" class="form-control" id="primary" name="primary" value="{{data.primaryBeerStyle}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="primaryD">Primary Beer Style Description</label></td>
+            <td><input type="text" class="form-control" id="primaryD" name="primaryD" value="{{data.primaryBeerStyleDesc}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="style">Specific Beer Style</label></td>
+            <td><input type="text" class="form-control" id="style" name="style" value="{{data.specificBeerStyle}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="styleD">Specific Beer Style Description</label></td>
+            <td><input type="text" class="form-control" id="styleD" name="styleD" value="{{data.specificBeerStyleDesc}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="food">Food Pairing</label></td>
+            <td><input type="text" class="form-control" id="food" name="food" value="{{data.foodPairing}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="oz">Oz</label></td>
+            <td><input type="text" class="form-control" id="oz" name="oz" value="{{data.oz}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="ml">ml</label></td>
+            <td><input type="text" class="form-control" id="ml" name="ml" value="{{data.ml}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="container">Container</label></td>
+            <td><input type="text" class="form-control" id="container" name="container" value="{{data.container}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="abv">ABV</label></td>
+            <td><input type="text" class="form-control" id="abv" name="abv" value="{{data.abv}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="ibu">IBU</label></td>
+            <td><input type="text" class="form-control" id="ibu" name="ibu" value="{{data.ibu}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="srm">SRM</label></td>
+            <td><input type="text" class="form-control" id="srm" name="srm" value="{{data.srm}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="malt">Malt</label></td>
+            <td><input type="text" class="form-control" id="malt" name="malt" value="{{data.malt}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="hops">Hops</label></td>
+            <td><input type="text" class="form-control" id="hops" name="hops" value="{{data.hops}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="cals">Calories</label></td>
+            <td><input type="text" class="form-control" id="cals" name="cals" value="{{data.cals}}"/></td>
+        </tr>
+        <tr>
+            <td><label for="desc">Description</label></td>
+            <td><input type="text" class="form-control" id="desc" name="desc" value="{{data.desc}}"/></td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" name="button" value="update"> Update </button>
+    </div>
+</form>
+{% endblock %} 

@@ -1,0 +1,103 @@
+{% extends "base.html" %} {% block title %}CreateDatabaseEntry{% endblock %}
+{% block content%}
+<form method="POST">
+    <h1>Enter Information</h1>
+    <table>
+        <tr>        
+            <td><label for="name">Name</label></td>
+            <td><input type="text" class="form-control" id="name" name="name" placeholder="Name"/></td>
+        </tr>
+        <tr>
+            <td><label for="abv">Price</label></td>
+            <td><input type="text" class="form-control" id="abv" name="price" placeholder="Price"/></td>
+        </tr>
+        <tr>
+            <td><label for="brewer">Brewer</label></td>
+            <td><input type="text" class="form-control" id="brewer" name="brewer" placeholder="Brewer"/></td>
+        </tr>
+        <tr>
+            <td><label for="region">Region</label></td>
+            <td><input type="text" class="form-control" id="region" name="region" placeholder="Region"/></td>
+        </tr>
+        <tr>
+            <td><label for="country">Country</label></td>
+            <td><input type="text" class="form-control" id="country" name="country" placeholder="Country"/></td>
+        </tr>
+        <tr>
+            <td><label for="state">State</label></td>
+            <td><input type="text" class="form-control" id="state" name="state" placeholder="State"/></td>
+        </tr>
+        <tr>
+            <td><label for="temp1">Temporary Beer Style 1</label></td>
+            <td><input type="text" class="form-control" id="temp1" name="temp1" placeholder="Temporary Beer Style 1"/></td>
+        </tr>
+        <tr>
+            <td><label for="temp2">Temporary Beer Style 2</label></td>
+            <td><input type="text" class="form-control" id="temp2" name="temp2" placeholder="Temporary Beer Style 2"/></td>
+        </tr>
+        <tr>
+            <td><label for="primary">Primary Beer Style</label></td>
+            <td><input type="text" class="form-control" id="primary" name="primary" placeholder="Primary Beer Style"/></td>
+        </tr>
+        <tr>
+            <td><label for="primaryD">Primary Beer Style Description</label></td>
+            <td><input type="text" class="form-control" id="primaryD" name="primaryD" placeholder="Primary Beer Style Description"/></td>
+        </tr>
+        <tr>
+            <td><label for="style">Specific Beer Style</label></td>
+            <td><input type="text" class="form-control" id="style" name="style" placeholder="Specific Beer Style"/></td>
+        </tr>
+        <tr>
+            <td><label for="styleD">Specific Beer Style Description</label></td>
+            <td><input type="text" class="form-control" id="styleD" name="styleD" placeholder="Specific Beer Style Description"/></td>
+        </tr>
+        <tr>
+            <td><label for="food">Food Pairing</label></td>
+            <td><input type="text" class="form-control" id="food" name="food" placeholder="Food Pairing"/></td>
+        </tr>
+        <tr>
+            <td><label for="oz">Oz</label></td>
+            <td><input type="text" class="form-control" id="oz" name="oz" placeholder="Oz"/></td>
+        </tr>
+        <tr>
+            <td><label for="ml">ml</label></td>
+            <td><input type="text" class="form-control" id="ml" name="ml" placeholder="ml"/></td>
+        </tr>
+        <tr>
+            <td><label for="container">Container</label></td>
+            <td><input type="text" class="form-control" id="container" name="container" placeholder="Container"/></td>
+        </tr>
+        <tr>
+            <td><label for="abv">ABV</label></td>
+            <td><input type="text" class="form-control" id="abv" name="abv" placeholder="ABV"/></td>
+        </tr>
+        <tr>
+            <td><label for="ibu">IBU</label></td>
+            <td><input type="text" class="form-control" id="ibu" name="ibu" placeholder="IBU"/></td>
+        </tr>
+        <tr>
+            <td><label for="srm">SRM</label></td>
+            <td><input type="text" class="form-control" id="srm" name="srm" placeholder="SRM"/></td>
+        </tr>
+        <tr>
+            <td><label for="malt">Malt</label></td>
+            <td><input type="text" class="form-control" id="malt" name="malt" placeholder="Malt"/></td>
+        </tr>
+        <tr>
+            <td><label for="hops">Hops</label></td>
+            <td><input type="text" class="form-control" id="hops" name="hops" placeholder="Hops"/></td>
+        </tr>
+        <tr>
+            <td><label for="cals">Calories</label></td>
+            <td><input type="text" class="form-control" id="cals" name="cals" placeholder="Calories"/></td>
+        </tr>
+        <tr>
+            <td><label for="desc">Description</label></td>
+            <td><input type="text" class="form-control" id="desc" name="desc" placeholder="Description"/></td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" name="button" value="create"> Create </button>
+    </div>
+</form>
+{% endblock %}
