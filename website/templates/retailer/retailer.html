@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block title %}Retailer{% endblock %}
+{% block content%}
+   <form method="POST">
+      <button type="submit" class="btn btn-primary" name="button" value="specials">Create Specials</button>
+      <button type="submit" class="btn btn-primary" name="button" value="searchHigh">View Highest Searched Beers</button>
+      <button type="submit" class="btn btn-primary" name="button" value="searchLow">View Lowest Search Beers</button>
+      <button type="submit" class="btn btn-primary" name="button" value="database">Edit Database</button>
+    </form>
+{% endblock %}
