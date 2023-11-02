@@ -1,1 +1,15 @@
-
+{% extends "base.html" %} {% block title %}Login{% endblock %}
+{% block content%}
+  <form method="POST">
+      <button type="submit" class="btn btn-primary" name="button" value="customer">Customer</button>
+  </form>
+  <form method="POST">
+        <button type="submit" class="btn btn-primary" name="button" value="admin">Admin</button>
+  </form>
+  <form method="POST">
+    <button type="submit" class="btn btn-primary" name="button" value="kiosk">Kiosk</button>
+  </form>
+  <form method="POST">
+    <button type="submit" class="btn btn-primary" name="button" value="retailer">Retailer</button>
+  </form>
+{% endblock %}
