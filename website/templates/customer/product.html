@@ -1,0 +1,134 @@
+{% extends "base.html" %} {% block title %}Product{% endblock %}
+{% block nav %} 
+<form method="POST"><input type="text" class="form-control" id="search" name="search" placeholder="Enter Search Item"/></form>
+<button type="submit" class="btn btn-primary" name="button" value="search"> Search </button>
+{% endblock %}
+{% block content%}
+<table>
+    <tr>
+        <th>Brand Name</th>
+        <td>{{ data[0].name }}</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>{{ data[0].price }}</td>
+    </tr>
+    <tr>
+        <th>Brewer</th>
+        <td>{{ data[0].brewer }}</td>
+    </tr>
+    <tr>
+        <th>Origin Region</th>
+        <td>{{ data[0].region }}</td>
+    </tr>
+    <tr>
+        <th>Origin Country</th>
+        <td>{{ data[0].country }}</td>
+    </tr>
+    <tr>
+        <th>Origin State</th>
+        <td>{{ data[0].state }}</td>
+    </tr>
+    <tr>
+        <th>Temporary Beer Style 1</th>
+        <td>{{ data[0].tempBeerStyle1 }}</td>
+    </tr>
+    <tr>
+        <th>Temporary Beer Style 2</th>
+        <td>{{ data[0].tempBeerStyle2 }}</td>
+    </tr>
+    <tr>
+        <th>Primary Beer Style</th>
+        <td>{{ data[0].primaryBeerStyle }}</td>
+    </tr>
+    <tr>
+        <th>Primary Beer Style Description</th>
+        <td>{{ data[0].primaryBeerStyleDesc }}</td>
+    </tr>
+    <tr>
+        <th>Specific Beer Style</th>
+        <td>{{ data[0].specificBeerStyle }}</td>
+    </tr>
+    <tr>
+        <th>Specific Beer Style Description</th>
+        <td>{{ data[0].specificBeerStyleDesc }}</td>
+    </tr>
+    <tr>
+        <th>Food Pairing</th>
+        <td>{{ data[0].foodPairing }}</td>
+    </tr>
+    <tr>
+        <th>Oz</th>
+        <td>{{ data[0].oz }}</td>
+    </tr>
+    <tr>
+        <th>ml</th>
+        <td>{{ data[0].ml }}</td>
+    </tr>
+    <tr>
+        <th>Container</th>
+        <td>{{ data[0].container }}</td>
+    </tr>
+    <tr>
+        <th>ABV</th>
+        <td>{{ data[0].abv }}</td>
+    </tr>
+    <tr>
+        <th>IBU</th>
+        <td>{{ data[0].ibu }}</td>
+    </tr>
+    <tr>
+        <th>SRM</th>
+        <td>{{ data[0].srm }}</td>
+    </tr>
+    <tr>
+        <th>Malt</th>
+        <td>{{ data[0].malt }}</td>
+    </tr>
+    <tr>
+        <th>Hops</th>
+        <td>{{ data[0].hops }}</td>
+    </tr>
+    <tr>
+        <th>Calories</th>
+        <td>{{ data[0].cals }}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{ data[0].desc }}</td>
+    </tr>
+</table>
+<form method="POST">
+    <div class="form-group">
+        <label for="numberInput"> Enter Number of Product for Checkout</label>
+        <input type="number" id="numberInput" name="numberInput" min="1" value="1"/>
+      </div>
+    <button type="submit" class="btn btn-primary" name="button" value="products"> Back to Product Listing </button>
+    <button type="submit" class="btn btn-primary" name="button" value="cart"> Add to Cart </button>
+</form>
+<table>
+    <th>Related Beers</th>
+    <tr>
+        <td>{{ data[1].name }}</td>
+        <td>{{ data[2].name }}</td>
+        <td>{{ data[3].name }}</td>
+    </tr>
+    <tr>
+        <td>
+            <form method="POST">
+                <button type="submit" class="btn btn-primary" name="button" value="{{ data[1].id }}"> View Product Page </button>
+            </form>
+        </td>
+        <td>
+            <form method="POST">
+                <button type="submit" class="btn btn-primary" name="button" value="{{ data[2].id }}"> View Product Page </button>
+            </form>
+        </td>
+        <td>
+            <form method="POST">
+                <button type="submit" class="btn btn-primary" name="button" value="{{ data[3].id }}"> View Product Page </button>
+            </form>
+        </td>
+    </tr>
+</table>
+{% endblock %}

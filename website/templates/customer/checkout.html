@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Checkout{% endblock %}
+{% block content%}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td> {{ row.name }}</td>
+        <td> {{ row.price }}</td>
+        <td></td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td></td>
+        <td>{{ total }}</td>
+    </tr>
+</table>
+<form method="POST">
+    <button type="submit" class="btn btn-primary" name="button" value="back"> Back to Product Listing </button>
+    <button type="submit" class="btn btn-primary" name="button" value="continue"> Continue to Payment </button>
+</form>
+{% endblock %}

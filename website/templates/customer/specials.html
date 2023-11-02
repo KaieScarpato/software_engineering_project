@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %}Specials{% endblock %}
+{% block nav %} 
+<form method="POST"><input type="search" class="form-control" id="search" name="search" placeholder="Enter Item"/></form>
+<button type="submit" class="btn btn-primary" name="button" value="search"> Search </button>
+{% endblock %}
+{% block content%}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>ABV</th>
+        <th>Beer Style</th>
+        <th>Price</th>
+        <th>View Product Page</th>
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td> {{ row.name }}</td>
+        <td> {{ row.abv }}</td>
+        <td> {{ row.primaryBeerStyle }}</td>
+        <td> {{ row.price }}</td>
+        <td> <form method='POST'><button type="submit" class="btn btn-primary" name="button" value="{{ loop.index }}"> View Product Page </button></form></td>
+    </tr>
+    {% endfor %}
+    <td> <form method='POST'><button type="submit" class="btn btn-primary" name="button" value="back"> Back to Customer Home Page</button></form></td>
+    <td> <form method='POST'><button type="submit" class="btn btn-primary" name="button" value="Checkout"> Checkout </button></form></td>
+</table>
+{% endblock %}
