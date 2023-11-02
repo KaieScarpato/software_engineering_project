@@ -4,6 +4,7 @@ How to run web app:
 - Start virtual environment by running env\bin\activate.bat (for windows system)
 - Start web app by running command flask run
 - Follow link to web app
+------------
 How to initialize db:
 - Run web app
 - Navigate to web app login page
