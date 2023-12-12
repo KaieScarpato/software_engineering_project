@@ -14,6 +14,11 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='style.css') }}"
+    />
 
     <title>{% block title %}Home{% endblock %}</title>
   </head>
@@ -30,30 +35,53 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" id="login" href="/">Login</a>
+          <a class="nav-item nav-link" style="color:white;" id="home" href="/">Home</a>
+          <a class="nav-item nav-link" style="color:white;" id="login" href="/login">Login</a>
         </div>
-      </div>
-      {% block nav %} {% endblock %}
+      </div> 
+      {% if view == 4 %}
+      <form method="POST">
+        <table>
+            <tr>
+                <td><input type="text" class="form-control" action="search" id="search" name="search" placeholder="Enter Search Item"/></td>
+                <td><button type="submit" class="btn buttonDisplay" name="button" value="search"> Search </button></td>
+            </tr>
+        </table>
+      </form>
+      {% endif  %}
     </nav>
 
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
-    <div class="alert alert-danger alter-dismissable fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    {% else %}
-    <div class="alert alert-success alter-dismissable fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
+      messages %} {% for category, message in messages %} {% if category ==
+      'error' %}
+      <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% else %}
+      <div class="alert alert-success alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %} {% endfor %} {% endif %} {% endwith %}
 
     <div class="container">{% block content %} {% endblock %}</div>
   </body>
+  <footer class="footer footer-expand-lg footer-dark bg-dark">
+    <div style="display: inline-block; padding-right: 20px;">
+      <p>1234 Beer Lane</p>
+      <p>Philadelphia, PA 19019</p>
+    </div>
+    <div style="display: inline-block; padding-right:70%;">
+      <p>beerco@gmail.com</p>
+      <p>215-965-3479</p>
+    </div>
+    <div style="display: inline-flex;">
+      <image src ="{{url_for('static', filename='images/logo.png')}}" height="50px" width="50px">
+    </div>
+  </footer>
 </html>
