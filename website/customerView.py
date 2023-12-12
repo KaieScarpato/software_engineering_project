@@ -5,22 +5,19 @@ from . import db
 
 customerView = Blueprint('customerView', __name__)
 cart = []
-
-@customerView.route('/customer', methods=['GET', 'POST'])
-def customer():
-    if request.method == 'POST':
-        if request.form['button'] == 'products':
-            return redirect(url_for('customerView.products', page = 0))
-        if request.form['button'] == 'specials':
-            return redirect(url_for('customerView.specials'))
-        
-    return render_template("customer/customer.html")
+ll = [-1]
 
 @customerView.route('/customer/products', methods=['GET','POST'])
 def products():
+    flag = 0
     page = int(request.args.get('page', None))
+    beerList = Beer.query.filter(Beer.id >= int(page*10)).limit(10)
+    len = beerList.count()
     if request.method == 'POST':
-        if request.form['button'] == 'back':
+        if request.form['button'] == 'search':
+            sTerm = request.form.get('search')
+            return redirect(url_for('customerView.search', term = sTerm))
+        elif request.form['button'] == 'back':
             return redirect(url_for('customerView.customer'))
         elif request.form['button'] == 'Checkout':
             return redirect(url_for('customerView.checkout'))
@@ -35,8 +32,47 @@ def products():
             Beer.query.filter_by(id=index).first().searchFreq += 1
             db.session.commit()
             return redirect(url_for('customerView.product', index = index))
+
+    if len < 10:
+        flag = 1
+
+    return render_template("customer/productList.html", data = beerList, page = page, flag = flag, view = 4)
+
+@customerView.route('/customer/search', methods=['GET','POST'])
+def search():
+    flag = 0
+    term = str(request.args.get('term', None))
+    beerList = Beer.query.filter(Beer.name.contains(term),Beer.id > ll[-1]).limit(10)
+    len = beerList.count()
+    if len > 0:
+        if request.method == 'POST':
+            if request.form['button'] == 'search':
+                sTerm = request.form.get('search')
+                return redirect(url_for('customerView.search', term = sTerm))
+            if request.form['button'] == 'back':
+                return redirect(url_for('customerView.customer'))
+            elif request.form['button'] == 'Checkout':
+                return redirect(url_for('customerView.checkout'))
+            elif request.form['button'] == 'previous':
+                ll.pop()
+                return redirect(url_for('customerView.search', ll = ll, term = term))
+            elif request.form['button'] == 'next':
+                ll.append(beerList[len - 1].id)
+                return redirect(url_for('customerView.search', ll = ll, term = term))
+            else:    
+                index = int(request.form['button'])
+                Beer.query.filter_by(id=index).first().searchFreq += 1
+                db.session.commit()
+                return redirect(url_for('customerView.product', index = index))
     
-    return render_template("customer/productList.html", data = Beer.query.filter(Beer.id >= int(page*10)).limit(10), page = page)
+        if not Beer.query.filter(Beer.name.contains(term), Beer.id > beerList[len - 1].id).limit(1):
+            flag = 1
+        if len < 10:
+            flag = 1
+
+        return render_template("customer/productList.html", data = beerList, page = ll[-1], flag = flag, view = 4)
+    else:
+        return render_template("customer/searchError.html", term = term, view = 4)
 
 @customerView.route('/customer/specials', methods=['GET','POST'])
 def specials():
@@ -51,7 +87,7 @@ def specials():
             db.session.commit()
             return redirect(url_for('customerView.product', index = index))
     
-    return render_template("customer/specials.html", data = Beer.query.filter(Beer.special==1))
+    return render_template("customer/specials.html", data = Beer.query.filter(Beer.special==1), view = 4)
 
 @customerView.route('/customer/product', methods=['GET','POST'])
 def product():
@@ -74,11 +110,37 @@ def product():
     
     beerList.append(initBeer)
 
-    beerList.append(Beer.query.filter(Beer.brewer == initBeer.brewer).filter(Beer.id != initBeer.id).first())
-    beerList.append(Beer.query.filter(Beer.region == initBeer.region).filter(Beer.id != initBeer.id).filter(Beer.id != beerList[1].id).first())
-    beerList.append(Beer.query.filter(Beer.primaryBeerStyle == initBeer.primaryBeerStyle).filter(Beer.id != initBeer.id).filter(Beer.id != beerList[1].id).filter(Beer.id != beerList[2].id).first())
-
-    return render_template('customer/product.html', data = beerList)
+    params = [initBeer.id,-1,-1,-1]
+    while -1 in params:
+        if params[1] == -1:
+            for id in range(len(beerList)):
+                newBeer = Beer.query.filter(Beer.brewer == beerList[id].brewer).limit(4)
+                if newBeer:
+                    for each in newBeer:
+                        if each.id not in params:
+                            beerList.append(each)
+                            params[1] = each.id
+                            break
+        if params[2] == -1:
+            for id in range(len(beerList)):
+                newBeer = Beer.query.filter(Beer.region == beerList[id].region).limit(4)
+                if newBeer:
+                    for each in newBeer:
+                        if each.id not in params:
+                            beerList.append(each)
+                            params[2] = each.id
+                            break
+        if params[3] == -1:
+            for id in range(len(beerList)):
+                newBeer = Beer.query.filter(Beer.primaryBeerStyle == beerList[id].primaryBeerStyle).limit(4)
+                if newBeer:
+                    for each in newBeer:
+                        if each.id not in params:
+                            beerList.append(each)
+                            params[3] = each.id
+                            break
+            
+    return render_template('customer/product.html', data = beerList, view = 4)
 
 @customerView.route('/customer/checkout', methods=['GET','POST'])
 def checkout():
@@ -87,23 +149,7 @@ def checkout():
         if request.form['button'] == 'back':
             return redirect(url_for('customerView.products', page = 0))
         elif request.form['button'] == 'continue':
-            return redirect(url_for('customerView.payment', total=str(total)))
-    
-    return render_template('customer/checkout.html', data = cart, total = total)
-
-@customerView.route('/customer/checkout/payment', methods=['GET','POST'])
-def payment():
-    total = request.args.get('total', None)
-    if request.method == 'POST':
-        if request.form['button'] == 'back':
-            return redirect(url_for('customerView.products', page = 0))
-        elif request.form['button'] == 'pay':    
-            cardNumber = request.form.get('cardNumber')
-            month = request.form.get('month')
-            year = request.form.get('year')
-            cvv = request.form.get('cvv')
-            print(cardNumber, month, year, cvv)
             cart.clear()
-            return redirect(url_for('customerView.checkout'))
+            return redirect(url_for('customerView.products', page = 0))
     
-    return render_template('customer/payment.html', total = total)
+    return render_template('customer/checkout.html', data = cart, total = total, view = 4)

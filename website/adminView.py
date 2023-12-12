@@ -19,29 +19,13 @@ def admin():
                     return redirect(url_for('adminView.readDatabase', index = input))
                 else:
                     flash('Enter existing ID')        
-        if request.form['button'] == 'update':
-            input = request.form.get('updateID')
-            if input:
-                input = int(input)
-                if Beer.query.filter_by(id=input).first() != None:
-                    return redirect(url_for('adminView.updateDatabase', index = input))
-                else:
-                    flash('Enter existing ID')        
-        if request.form['button'] == 'delete':
-            input = request.form.get('readID')
-            if input:
-                input = int(input)
-                if Beer.query.filter_by(id=input).first() != None:
-                    return redirect(url_for('adminView.deleteDatabase', index = input))
-                else:
-                    flash('Enter existing ID')
         if request.form['button'] == 'initialize':
             try:
                 init_database()
             except exc.SQLAlchemyError:
                 flash('Database is already initialized')
         
-    return render_template("admin/admin.html") 
+    return render_template("admin/admin.html", view = 1) 
 
 @adminView.route('/admin/createDatabase', methods=['GET', 'POST'])
 def createDatabase():
@@ -78,18 +62,24 @@ def createDatabase():
             db.session.commit()
             flash('create successful')
             return redirect(url_for('adminView.admin'))
+        if request.form['button']=='back':
+            return redirect(url_for('adminView.admin'))
         
-    return render_template("admin/createDatabase.html") 
+    return render_template("admin/createDatabase.html", view = 1) 
 
 @adminView.route('/admin/readDatabase', methods=['GET', 'POST'])
 def readDatabase():
     index = request.args.get('index', None)
     beer = Beer.query.filter_by(id=index).first()
     if request.method == 'POST':
+        if request.form['button'] == 'update':
+            return redirect(url_for('adminView.updateDatabase', index = index))
+        if request.form['button'] == 'delete':
+            return redirect(url_for('adminView.deleteDatabase', index = index))
         if request.form['button']=='back':
             return redirect(url_for('adminView.admin'))
 
-    return render_template("admin/readDatabase.html", data = beer) 
+    return render_template("admin/readDatabase.html", data = beer, view = 1) 
 
 @adminView.route('/admin/updateDatabase', methods=['GET', 'POST'])
 def updateDatabase():
@@ -123,8 +113,10 @@ def updateDatabase():
             db.session.commit()
             flash('update successful')
             return redirect(url_for('adminView.admin'))
+        if request.form['button']=='back':
+            return redirect(url_for('adminView.admin'))
 
-    return render_template("admin/updateDatabase.html", data = beer)
+    return render_template("admin/updateDatabase.html", data = beer, view = 1)
 
 @adminView.route('/admin/deleteDatabase', methods=['GET', 'POST'])
 def deleteDatabase():
@@ -136,5 +128,7 @@ def deleteDatabase():
             db.session.commit()
             flash('delete successful')
             return redirect(url_for('adminView.admin'))
+        if request.form['button']=='back':
+            return redirect(url_for('adminView.admin'))
 
-    return render_template("admin/deleteDatabase.html", data = beer)  
+    return render_template("admin/deleteDatabase.html", data = beer, view = 1)  

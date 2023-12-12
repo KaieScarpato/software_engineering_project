@@ -28,3 +28,10 @@ class Beer(db.Model):
     desc = db.Column(db.String(500))
     special = db.Column(db.Integer)
     searchFreq = db.Column(db.Integer)
+
+class User(db.Model):
+    __tablename__ = 'user'
+    role = db.Column(db.Integer)
+    name = db.Column(db.String(20), primary_key=True)
+    password = db.Column(db.String(200))
+    salt = db.Column(db.String(20))

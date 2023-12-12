@@ -7,6 +7,10 @@ kioskView = Blueprint('kioskView', __name__)
 def kiosk():
     if request.method == 'POST':
         if request.form['button'] == 'backup':
-            os.system('COPY C:\\Users\\kaies\\OneDrive\\Desktop\\PythonVsProjects\\SoftwareEngineeringProject\\instance\\database.db C:\\Users\\kaies\\OneDrive\\Desktop\\PythonVsProjects\\SoftwareEngineeringProject\\backup\\backup.db')
-
-    return render_template("kiosk/kiosk.html")
+            flag = os.system('COPY C:\\Users\\kaies\\OneDrive\\Desktop\\PythonVsProjects\\SoftwareEngineeringProject\\instance\\database.db C:\\Users\\kaies\\OneDrive\\Desktop\\PythonVsProjects\\SoftwareEngineeringProject\\backup\\backup.db')
+            print(flag)
+            if flag == 0:
+                flash("Backup Successful")
+            else:
+                flash("Backup Unsuccessful")
+    return render_template("kiosk/kiosk.html", view = 3)
