@@ -1,3 +1,0 @@
-To setup venv call python3 buildEnv.py
-To activate venv use env\bin\activate.bat (windows)
-To deactivate venv use env\bin\deactivate.bat (windows)
