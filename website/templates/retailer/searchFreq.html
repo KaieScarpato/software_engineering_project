@@ -2,8 +2,8 @@
 {% block content%}
 <table>
     <tr>
-        <th>Name</th>
-        <th>Search Frequency</th>
+        <th class="nameRetailer">Name</th>
+        <th class="searchFreq">Search Frequency</th>
         <th>Product ID</th>
     </tr>
     {% for row in data %}
@@ -15,6 +15,6 @@
     {% endfor %}
 </table>
 <form method="POST">
-    <button type="submit" class="btn btn-primary" name="button" value="back"> Back </button>
+    <button type="submit" class="btn buttonDisplay" name="button" value="back"> Back </button>
 </form>
 {% endblock %}

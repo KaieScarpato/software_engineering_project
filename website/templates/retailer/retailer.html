@@ -1,9 +1,17 @@
 {% extends "base.html" %} {% block title %}Retailer{% endblock %}
 {% block content%}
-   <form method="POST">
-      <button type="submit" class="btn btn-primary" name="button" value="specials">Create Specials</button>
-      <button type="submit" class="btn btn-primary" name="button" value="searchHigh">View Highest Searched Beers</button>
-      <button type="submit" class="btn btn-primary" name="button" value="searchLow">View Lowest Search Beers</button>
-      <button type="submit" class="btn btn-primary" name="button" value="database">Edit Database</button>
-    </form>
+<form method="POST">
+    <div class="adminDiv">
+        <input type="text" class="form-control" id="readID" name="readID" placeholder="Enter ID"/>
+        <button type="submit" style="width: 200px;" class="btn buttonDisplay" name="button" value="read">Search Database</button>
+    </div>
+    <div class="adminButtonDiv">
+         <button type="submit" class="btn buttonDisplayRetailer" name="button" value="specials">Edit Specials</button>
+    </div>
+    <div class="adminButtonDiv">
+         <button type="submit" class="btn buttonDisplayRetailer" name="button" value="searchHigh">View Highest Searched Beers</button>
+    </div>
+    <div class="adminButtonDiv">
+         <button type="submit" class="btn buttonDisplayRetailer" name="button" value="searchLow">View Lowest Search Beers</button>
+  </div>
 {% endblock %}

@@ -2,20 +2,22 @@
 {% block content%}
 <table>
     <tr>
-        <th>Name</th>
-        <th>Price</th>
+        <th class="nameRetailer">Name</th>
+        <th class="priceRetailer">Price</th>
     </tr>
     {% for row in data %}
     <tr>
         <td> {{ row.name }}</td>
         <td> {{ row.abv }}</td>
-        <td> <form method='POST'><button type="submit" class="btn btn-primary" name="button" value="{{ row.id }}"> Remove </button></form></td>
+        <td> <form method='POST'><button type="submit" class="btn buttonDisplay" name="button" value="{{ row.id }}"> Remove </button></form></td>
     </tr>
     {% endfor %}
     <tr>
-        <td> <form method="POST"><button type="submit" class="btn btn-primary" name="button" value="add">Add Beer to Specials Page</button> </form></td>
-        <td> <form method="POST"><input type="text" class="form-control" id="add" name="add" placeholder="Enter ID"/> </form></td>
+        <form method="POST">
+        <td> <input type="text" class="form-control" id="add" name="add" placeholder="Enter ID"/></td>
+        <td> <button type="submit" class="btn buttonDisplay" name="button" value="add">Add Beer to Specials Page</button></td>
+        </form>
     </tr>
 </table>
-<form method='POST'><button type="submit" class="btn btn-primary" name="button" value="back"> Back </button></form>
+<form method='POST'><button type="submit" class="btn buttonDisplay" name="button" value="back"> Back </button></form>
 {% endblock %}
