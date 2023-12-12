@@ -1,0 +1,112 @@
+body{
+    background-color: lightgray;
+}
+.container{
+    min-height: 80vh;
+    padding-bottom: 10px;
+}
+.footer-dark{
+    padding:10px;
+    color:white;
+}
+
+.adminDiv {
+    width: 600px; 
+    display: flex;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    padding-top: 5px;
+}
+.adminButtonDiv{
+    display: inline-block;
+}
+.buttonDisplayAdmin{
+    width: 552px;
+    background-color:darkcyan;
+    border-radius: 12px;
+    height: 300px;
+}
+
+.buttonDisplayKiosk{
+    width: 365px;
+    background-color:darkcyan;
+    border-radius: 12px;
+    height: 300px;
+}
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.buttonDisplayRetailer{
+    width: 365px;
+    background-color:darkcyan;
+    border-radius: 12px;
+    height: 300px;
+}
+.nameRetailer{
+    padding-right: 325px;
+}
+.searchFreq{
+    padding-right: 325px;
+}
+.priceRetailer{
+    padding-right: 325px;
+}
+
+.homeImg{
+    display: inline;
+}
+.homeDiv{
+    display: inline-block;
+    padding-right: 300px;
+}
+.homeButtonDiv{
+    padding-top: 25px;
+}
+.homeButton{
+    width: 300px;
+    background-color:darkcyan;
+    border-radius: 12px;
+}
+
+.name{
+    padding-right: 350px;
+}
+.abv{
+    padding-right: 50px;
+}
+.style{
+    padding-right: 200px;
+}
+.price{
+    padding-right: 50px;
+}
+.customData{
+    padding-bottom: 10px;
+}
+.nameCheckout{
+    padding-right: 400px;
+}
+.priceCheckout{
+    padding-right: 250px;
+}
+.customDataCheckout{
+    padding-bottom: 10px;
+}
+.buttonDisplay{
+    background-color:darkcyan;
+    border-radius: 12px;
+}
+.related{
+    padding-right: 200px;
+}
+.buttonRelated{
+    background-color:darkcyan;
+    border-radius: 12px;
+    width: 300px;
+}
