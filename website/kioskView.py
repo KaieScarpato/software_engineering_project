@@ -7,7 +7,8 @@ kioskView = Blueprint('kioskView', __name__)
 def kiosk():
     if request.method == 'POST':
         if request.form['button'] == 'backup':
-            flag = os.system('COPY C:\\Users\\kaies\\OneDrive\\Desktop\\PythonVsProjects\\SoftwareEngineeringProject\\instance\\database.db C:\\Users\\kaies\\OneDrive\\Desktop\\PythonVsProjects\\SoftwareEngineeringProject\\backup\\backup.db')
+            path = os.getcwd()
+            flag = os.system(f'COPY {path}\\instance\\database.db {path}\\backup\\backup.db')
             print(flag)
             if flag == 0:
                 flash("Backup Successful")
