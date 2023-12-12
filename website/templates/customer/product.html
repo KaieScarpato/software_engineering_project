@@ -1,8 +1,4 @@
 {% extends "base.html" %} {% block title %}Product{% endblock %}
-{% block nav %} 
-<form method="POST"><input type="text" class="form-control" id="search" name="search" placeholder="Enter Search Item"/></form>
-<button type="submit" class="btn btn-primary" name="button" value="search"> Search </button>
-{% endblock %}
 {% block content%}
 <table>
     <tr>
@@ -103,30 +99,30 @@
         <label for="numberInput"> Enter Number of Product for Checkout</label>
         <input type="number" id="numberInput" name="numberInput" min="1" value="1"/>
       </div>
-    <button type="submit" class="btn btn-primary" name="button" value="products"> Back to Product Listing </button>
-    <button type="submit" class="btn btn-primary" name="button" value="cart"> Add to Cart </button>
+    <button type="submit" class="btn buttonDisplay" name="button" value="products"> Back to Product Listing </button>
+    <button type="submit" class="btn buttonDisplay" name="button" value="cart"> Add to Cart </button>
 </form>
 <table>
     <th>Related Beers</th>
     <tr>
-        <td>{{ data[1].name }}</td>
-        <td>{{ data[2].name }}</td>
+        <td class="related">{{ data[1].name }}</td>
+        <td class="related">{{ data[2].name }}</td>
         <td>{{ data[3].name }}</td>
     </tr>
     <tr>
         <td>
             <form method="POST">
-                <button type="submit" class="btn btn-primary" name="button" value="{{ data[1].id }}"> View Product Page </button>
+                <button type="submit" class="btn buttonRelated" name="button" value="{{ data[1].id }}"> View Product Page </button>
             </form>
         </td>
         <td>
             <form method="POST">
-                <button type="submit" class="btn btn-primary" name="button" value="{{ data[2].id }}"> View Product Page </button>
+                <button type="submit" class="btn buttonRelated" name="button" value="{{ data[2].id }}"> View Product Page </button>
             </form>
         </td>
         <td>
             <form method="POST">
-                <button type="submit" class="btn btn-primary" name="button" value="{{ data[3].id }}"> View Product Page </button>
+                <button type="submit" class="btn buttonRelated" name="button" value="{{ data[3].id }}"> View Product Page </button>
             </form>
         </td>
     </tr>

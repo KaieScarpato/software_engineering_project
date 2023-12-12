@@ -2,9 +2,9 @@
 {% block content%}
 <table>
     <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Total</th>
+        <th class="nameCheckout">Name</th>
+        <th class="priceCheckout">Price</th>
+        <th class="totalCheckout">Total</th>
     </tr>
     {% for row in data %}
     <tr>
@@ -18,9 +18,11 @@
         <td></td>
         <td>{{ total }}</td>
     </tr>
+    <tr>
+        <td><form method="POST"><button type="submit" class="btn buttonDisplay" name="button" value="back"> Back to Product Listing </button></form></td>
+        <td></td>
+        <td><form method="POST"><button type="submit" class="btn buttonDisplay" name="button" value="continue"> Checkout </button>
+        </form></td>
+    </tr>
 </table>
-<form method="POST">
-    <button type="submit" class="btn btn-primary" name="button" value="back"> Back to Product Listing </button>
-    <button type="submit" class="btn btn-primary" name="button" value="continue"> Continue to Payment </button>
-</form>
 {% endblock %}

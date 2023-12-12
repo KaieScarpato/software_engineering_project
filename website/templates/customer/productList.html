@@ -1,35 +1,42 @@
 {% extends "base.html" %} {% block title %}ProductList{% endblock %}
-{% block nav %} 
-<form method="POST">
-    <input type="text" class="form-control" action="search" id="search" name="search" placeholder="Enter Search Item"/>
-</form>
-<button type="submit" class="btn btn-primary" name="button" value="search"> Search </button>
-{% endblock %}
 {% block content%}
 <table>
-    <tr>
-        <th>Name</th>
-        <th>ABV</th>
-        <th>Beer Style</th>
-        <th>Price</th>
+    <tr class="customRow">
+        <th class="name">Name</th>
+        <th class="abv">ABV</th>
+        <th class="style">Beer Style</th>
+        <th class="price">Price</th>
         <th>View Product Page</th>
     </tr>
     {% for row in data %}
     <tr>
-        <td> {{ row.name }}</td>
-        <td> {{ row.abv }}</td>
-        <td> {{ row.primaryBeerStyle }}</td>
-        <td> {{ row.price }}</td>
-        <td> <form method='POST'><button type="submit" class="btn btn-primary" name="button" value="{{ row.id }}"> View Product Page </button></form></td>
+        <td class="customData"> {{ row.name }}</td>
+        <td class="customData"> {{ row.abv }}</td>
+        <td class="customData"> {{ row.primaryBeerStyle }}</td>
+        <td class="customData"> {{ row.price }}</td>
+        <td class="customData"> <form method='POST'><button type="submit" class="btn buttonDisplay" name="button" value="{{ row.id }}"> View Product Page </button></form></td>
     </tr>
     {% endfor %}
-    <td> <form method='POST'><button type="submit" class="btn btn-primary" name="button" value="Checkout"> Checkout </button></form></td>
+    <tr>
+        <td>
+            <form method='POST'>
+            {% if page > 0 %}
+            <button type="submit" class="btn buttonDisplay" name="button" value="previous"> Previous Page </button>
+            {% endif %}
+            </form>
+        </td>
+        <td></td><td></td><td></td>
+        <td>
+            <form method='POST'>
+            {% if flag == 0 %}
+            <button type="submit" class="btn buttonDisplay" name="button" value="next"> Next Page </button>
+            {% endif %}
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td><td></td>
+        <td><form method='POST'><button type="submit" class="btn buttonDisplay" name="button" value="Checkout"> View Cart </button></form></td>
+    </tr>
 </table>
-<form method="POST">
-    <form method='POST'><button type="submit" class="btn btn-primary" name="button" value="back"> Back to Customer Home Page</button>
-    {% if page > 0 %}
-    <button type="submit" class="btn btn-primary" name="button" value="previous"> Previous Page </button>
-    {% endif %}
-    <button type="submit" class="btn btn-primary" name="button" value="next"> Next Page </button>
-</form>
 {% endblock %}
