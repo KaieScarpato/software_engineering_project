@@ -96,8 +96,9 @@
             <td><input type="text" class="form-control" id="desc" name="desc" placeholder="Description"/></td>
         </tr>
     </table>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary" name="button" value="create"> Create </button>
-    </div>
+    <form method="POST">
+        <button type="submit" class="btn buttonDisplay" name="button" value="create"> Create </button>
+        <button type="submit" class="btn buttonDisplay" name="button" value="back"> Back </button>
+    </form>
 </form>
 {% endblock %}

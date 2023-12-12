@@ -1,25 +1,15 @@
 {% extends "base.html" %} {% block title %}Admin{% endblock %}
 {% block content%}
 <form method="POST">
-    <table>
-        <tr>
-            <td><button type="submit" class="btn btn-primary" name="button" value="create">Create New Database Entry</button></td>
-        </tr> 
-        <tr>
-            <td><button type="submit" class="btn btn-primary" name="button" value="read">Read Database Entry</button></td>
-            <td><input type="text" class="form-control" id="readID" name="readID" placeholder="Enter ID"/></td>    
-        </tr>  
-        <tr>    
-            <td><button type="submit" class="btn btn-primary" name="button" value="update">Update Database Entry</button></td>
-            <td><input type="text" class="form-control" id="updateID" name="updateID" placeholder="Enter ID"/></td>
-        </tr>
-        <tr>
-            <td><button type="submit" class="btn btn-primary" name="button" value="delete">Delete Database Entry</button></td>
-            <td><input type="text" class="form-control" id="deleteID" name="deleteID" placeholder="Enter ID"/></td>
-        </tr>
-        <tr>
-            <td><button type="submit" class="btn btn-primary" name="button" value="initialize">Initialize Databse</button></td>
-        </tr>
-    </table>
+    <div class="adminDiv">
+        <input type="text" class="form-control" id="readID" name="readID" placeholder="Enter ID"/>
+        <button type="submit" style="width: 200px;" class="btn buttonDisplay" name="button" value="read">Search Database</button>
+    </div>
+    <div class="adminButtonDiv">
+        <button type="submit" class="btn buttonDisplayAdmin" name="button" value="create">Create New Database Entry</button>
+    </div>
+    <div class="adminButtonDiv">
+        <button type="submit" class="btn buttonDisplayAdmin" name="button" value="initialize">Initialize Database</button>
+    </div>
 </form>
 {% endblock %}

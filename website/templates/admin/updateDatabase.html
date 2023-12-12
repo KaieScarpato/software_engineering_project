@@ -96,8 +96,9 @@
             <td><input type="text" class="form-control" id="desc" name="desc" value="{{data.desc}}"/></td>
         </tr>
     </table>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary" name="button" value="update"> Update </button>
-    </div>
+    <form method="POST">
+        <button type="submit" class="btn buttonDisplay" name="button" value="update"> Update </button>
+        <button type="submit" class="btn buttonDisplay" name="button" value="back"> Back </button>
+    </form>
 </form>
 {% endblock %} 
