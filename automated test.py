@@ -1,7 +1,7 @@
 import pyautogui
 import time
 
-# Dummy Coordinates (Replace these with actual coordinates on your screen)
+# Dummy Coordinates 
 search_bar_coordinates = (100, 100)
 search_results_coordinates = (200, 200)
 selected_product_coordinates = (300, 300)
