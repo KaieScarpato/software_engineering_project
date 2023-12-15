@@ -1,0 +1,88 @@
+﻿Test Case 1: UC-1 Customer Searches for a Product
+Scenario: Customer searches for a product by entering the product name in the kiosk search bar.
+Actors: Customer
+Initial System State: System is logged into the Customer level account.
+Steps:
+- Enter a product name in the search bar.
+- Verify that the system displays the 10 closest matches in order of similarity.
+
+
+Test Case 2: UC-2 Customer Views Specified Product Information
+Scenario: Customer selects a product from the search results.
+Actors: Customer
+Initial System State: System is presenting search results list.
+Steps:
+- Select a product from the search results.
+- Verify that the system displays detailed product information, including Name, Price, Color, Brewery, Description, ABV, and IBU.
+
+
+Test Case 3: UC-3 Customer Views Like Products
+Scenario: Customer views like products for a selected product.
+Actors: Customer
+Initial System State: System is displaying product information.
+Steps:
+- View product information (as in UC-2).
+- Verify that the system displays 3 like products (Brewery, Color, and Style).
+- Select one of the like products.
+- Verify that the system navigates to the selected like product's information page.
+
+
+Test Case 4: UC-5 Retailer Creates Specials Page
+Scenario: Retailer flags products as "Specials" to create a Specials page.
+Actors: Retailer
+Initial System State: Logged into Retailer account.
+Steps:
+- Flag products as "Specials" using the retail interface.
+- Verify that the system updates the database with appropriate flags.
+- Verify that the system displays flagged products under the Specials tab.
+
+
+Test Case 5: UC-6 Retailer Requests Search Frequency Report
+Scenario: Retailer requests a Search Frequency Report.
+Actors: Retailer
+Initial System State: System is displaying the retailer interface.
+Steps:
+- Click on a button to request a Search Frequency Report.
+- Verify that the system generates a report of the top 15 most searched qualities in the database.
+
+
+Test Case 6: UC-7 Retailer Updates Product Price
+Scenario: Retailer updates the price of products.
+Actors: Retailer
+Initial System State: System is displaying retail interface to retailer.
+Steps:
+- Access the product update page.
+- Update the price of products.
+- Verify that the system updates the local database to reflect price updates.
+
+
+Test Case 7: UC-8 Administrator (Beerco) Updates Database
+Scenario: Administrator edits the database using CRUD functions.
+Actors: Administrator
+Initial System State: System is logged into Administrator account and is displaying Administrator interface.
+Steps:
+- Enter the database update interface.
+- Edit the database using CRUD functions.
+- Verify that the system updates and distributes the new database to all connected systems at EOD.
+
+
+Test Case 8: UC-9 Kiosk Downloads Database to Local Storage
+Scenario: Kiosk downloads a new database at 11 PM local time.
+Actors: Kiosk
+Initial System State: Kiosk is connected to a database distribution server. A new Database is available for download.
+Steps:
+- Wait until 11 PM local time.
+- Verify that the kiosk downloads the new database as distributed.
+
+
+Bug Report Example:
+Title: Specials Page Not Updating
+Related Test Case: Test Case 4: UC-5 Retailer Creates Specials Page
+Issue: After flagging products as "Specials," the system fails to display them under the Specials tab.
+Expected Result: The system should update the database with appropriate flags and display flagged products under the Specials tab.
+Steps to Reproduce:
+1. Log in as a retailer.
+2. Flag products as "Specials."
+3. Navigate to the Specials tab.
+4. Observe that flagged products are not displayed.
+5. Verify database entries to confirm the absence of flag updates.
